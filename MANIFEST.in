@@ -1,0 +1,16 @@
+# Include the toml file
+include pyproject.toml
+
+# Include the README
+include *.md
+
+# Include the license file
+include LICENSE
+
+# Include the JavaScript Files
+include src/xtyle/babel.min.js
+include src/xtyle/prettier.min.js
+include src/xtyle/component.zip
+
+# Include the data files
+#recursive-include data *
