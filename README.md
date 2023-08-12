@@ -4,7 +4,10 @@ Python (**JSX-Toolkit**) Documentation
 
 ## Introduction
 
-Welcome to the Xtyle! This tool allows you to work with JSX components, compile them, and save them as static files for use with other frameworks like Flask. It is powered by `py-mini-racer`, `css-html-js-minify`, and `libsass`.
+Welcome to the Xtyle! This tool allows you to work with JSX components, compile them, and save them as static files for use with other frameworks like Flask. It is powered by.
+
+- Python: `py-mini-racer`, `css-html-js-minify`, and `libsass`
+- JavaScript: `babel`, and `prettier`
 
 ## Getting Started
 
