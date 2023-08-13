@@ -119,8 +119,10 @@ class JSX:
         )
         element.code_style = cls.scss(element.style or "", xtyle_name)
 
+        # Inject Name
         template = StringTemplate(element.component)
         element.component = template.safe_substitute(NAME=f'"{xtyle_name}"')
+        element.style = f"""$NAME: "{xtyle_name}";""" + "\n\n" + element.style
 
         # Set To Database
         cls.db.set(kebab_name, **element.__dict__)
