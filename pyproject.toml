@@ -21,7 +21,7 @@ build-backend = "pdm.backend"
 
 [project.urls]
 Homepage = "https://github.com/hlop3z/xtyle-python/"
-Documentation = "https://hlop3z.github.io/xtyle-python/"
+# Documentation = "https://hlop3z.github.io/xtyle-python/"
 
 [project.scripts]
 
