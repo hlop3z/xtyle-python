@@ -119,13 +119,13 @@ class DatabaseManager:
 
         self._close()
 
-    def delete_all(self, name: str):
+    def delete_all(self):
         """
         Delete all components from the database.
         """
         self._connect()
 
-        self.cursor.execute("DELETE FROM Component", (name,))
+        self.cursor.execute("DELETE FROM Component")
 
         self._close()
 

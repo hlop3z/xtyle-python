@@ -10,6 +10,7 @@ import types
 import uuid
 import os
 import shutil
+from string import Template as StringTemplate
 
 # Extras
 import sass
@@ -116,6 +117,9 @@ class JSX:
             cls.compile(element.component), ("x-" + kebab_name)
         )
         element.code_style = cls.scss(element.style or "", ("x-" + kebab_name))
+
+        template = StringTemplate(element.component)
+        element.component = template.safe_substitute(NAME=f'"{kebab_name}"')
 
         # Set To Database
         cls.db.set(kebab_name, **element.__dict__)
