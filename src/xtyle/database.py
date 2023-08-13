@@ -119,6 +119,16 @@ class DatabaseManager:
 
         self._close()
 
+    def delete_all(self, name: str):
+        """
+        Delete all components from the database.
+        """
+        self._connect()
+
+        self.cursor.execute("DELETE FROM Component", (name,))
+
+        self._close()
+
     def initialize_table(self):
         """
         Initialize the 'Component' table in the database if it doesn't exist.

@@ -98,6 +98,7 @@ class JSX:
     @classmethod
     def components(cls, *components) -> str:
         if cls.debug:
+            cls.db.delete_all()
             for path in components:
                 cls.component(path)
         return ""
