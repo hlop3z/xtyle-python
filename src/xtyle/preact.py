@@ -64,10 +64,14 @@ class JSX:
     debug = False
 
     @staticmethod
-    def scss(code):
+    def scss(code, name=None):
         """Database"""
+        css_code = ""
+        if name:
+            css_code += f"""$NAME: "{name}";"""
         try:
-            return sass.compile(string=code, output_style="compressed")
+            css_code += code
+            return sass.compile(string=css_code, output_style="compressed")
         except:
             return code or ""
 
@@ -107,8 +111,10 @@ class JSX:
 
         # HTML
         element = cls.collect_files(path)
-        element.code_component = cls.js_function(cls.compile(element.component))
-        element.code_style = cls.scss(element.style or "")
+        element.code_component = cls.js_function(
+            cls.compile(element.component), ("x-" + kebab_name)
+        )
+        element.code_style = cls.scss(element.style or "", ("x-" + kebab_name))
 
         # Set To Database
         cls.db.set(kebab_name, **element.__dict__)
@@ -117,14 +123,17 @@ class JSX:
         return ""
 
     @classmethod
-    def js_function_base(cls, code: str) -> str:
+    def js_function_base(cls, code: str, name: str | None) -> str:
         """JS Base"""
-        return "(function () {" + code + "})();"
+        c_name = ""
+        if name:
+            c_name += "const $NAME = " + name + "\n\n"
+        return "(function () {" + c_name + code + "})();"
 
     @classmethod
-    def js_function(cls, code: str) -> str:
+    def js_function(cls, code: str, name: str | None = None) -> str:
         """JS Function"""
-        return cls.js_function_base(code.replace("export default", "return"))
+        return cls.js_function_base(code.replace("export default", "return"), name)
 
     @classmethod
     def live_script(cls, code: str) -> str:
