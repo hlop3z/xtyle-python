@@ -110,16 +110,17 @@ class JSX:
 
         # Name
         kebab_name = path.replace("/", "-").lower()
+        xtyle_name = "x-" + kebab_name
 
         # HTML
         element = cls.collect_files(path)
         element.code_component = cls.js_function(
-            cls.compile(element.component), ("x-" + kebab_name)
+            cls.compile(element.component), xtyle_name
         )
-        element.code_style = cls.scss(element.style or "", ("x-" + kebab_name))
+        element.code_style = cls.scss(element.style or "", xtyle_name)
 
         template = StringTemplate(element.component)
-        element.component = template.safe_substitute(NAME=f'"{kebab_name}"')
+        element.component = template.safe_substitute(NAME=f'"{xtyle_name}"')
 
         # Set To Database
         cls.db.set(kebab_name, **element.__dict__)
