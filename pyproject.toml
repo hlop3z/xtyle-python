@@ -1,7 +1,7 @@
 
 [project]
 name = "xtyle"
-version = "0.1.1"
+version = "0.1.2"
 description = "Xtyle (Toolkit)"
 readme = "README.md"
 license = { text = "MIT" }
