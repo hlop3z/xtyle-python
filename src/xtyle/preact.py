@@ -127,7 +127,7 @@ class JSX:
         """JS Base"""
         c_name = ""
         if name:
-            c_name += "const $NAME = " + name + "\n\n"
+            c_name += f"""const $NAME = "{name}";""" + "\n\n"
         return "(function () {" + c_name + code + "})();"
 
     @classmethod
