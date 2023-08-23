@@ -1,41 +1,14 @@
-import os
-import pathlib
-import sys
-
 import pytest
 
-
-def dir_up(depth):
-    """Easy level-up folder(s)."""
-    return sys.path.append(os.path.join(pathlib.Path(__file__).parents[depth], "src"))
-
-
-# Append to (sys.path)
-dir_up(1)
-
-
 # Testing
-from xtyle import JSX
+import xtyle
 
-# Root Path
-BASE_DIR = pathlib.Path(__file__).parent
 
-# Init Controller
-JSX.init(
-    base=BASE_DIR,
-    # static=BASE_DIR / "static",
-    # templates=BASE_DIR / "templates" / "components",
-)
+def test_jsx():
+    code = xtyle.jsx("const App = () => <div>Hello World</div>")
+    assert code.strip() == """const App=()=>h("div",null,"Hello World");"""
 
-# Test One
-JSX.component("hello-world")
 
-# Print
-print(JSX.dev())
-
-print(JSX.get_config())
-
-JSX.api("create", "button")
-JSX.api("delete", "button")
-
-JSX.save()
+def test_scss():
+    code = xtyle.scss("$color: red; body { color: $color; }")
+    assert code.strip() == """body{color:red}"""

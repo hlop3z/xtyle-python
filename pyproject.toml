@@ -1,7 +1,7 @@
 
 [project]
 name = "xtyle"
-version = "0.1.3"
+version = "0.1.4"
 description = "Xtyle (Toolkit)"
 readme = "README.md"
 license = { text = "MIT" }
@@ -34,7 +34,7 @@ package-dir = "src"
 [tool.pdm.scripts]
 dev = "python scripts/linter.py"
 pre = { shell = "pre-commit run --all-file" }
-test = { shell = "cd tests/ && python test_one.py" }
+test = { shell = "pytest -rA tests/" }
 pypi = "twine upload dist/*"
 
 [tool.pdm.dev-dependencies]
