@@ -30,3 +30,11 @@ code_css = xtyle.scss("$color: red; body { color: $color; }")
 
 print(code_css)
 ```
+
+## Browser Usage
+
+```html
+<!-- Babel & Prettier -->
+<script src="https://cdn.jsdelivr.net/gh/hlop3z/xtyle-python@main/src/xtyle/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/hlop3z/xtyle-python@main/src/xtyle/prettier.min.js"></script>
+```
