@@ -1,0 +1,48 @@
+<script>
+    (function () {
+        const PREVIEW_MODULE_NAME = "{{ module_name }}";
+        const PREVIEW_VIEW_NAME = "{{ preview_name }}";
+        // {{ const("PREVIEW_DATA", preview_data) }}
+
+        const defaultView = () => h("h1", null, "Page Not Found!")
+
+        const data = PREVIEW_DATA || {}
+        const plugins = data.plugins || {}
+        const module = data.module || {}
+        const views = data.views || {}
+        const pluginsNames = plugins.names || []
+        const installPlugins = pluginsNames.map(element => `try { xtyle.use(${element}); } catch(e){};`).join("\n")
+
+        // Inject Current Module
+        if (plugins.javascript) {
+            eval((plugins.javascript || "") + installPlugins)
+        }
+
+        // Inject Current Module
+        if (module.javascript) {
+            eval((module.javascript || "") + "window.module_live_demo = " + PREVIEW_MODULE_NAME + ";")
+        }
+
+        // Inject Current Views
+        if (views.javascript) {
+            eval((views.javascript || "") + "window.installed_views = installed_views;")
+        }
+
+        // Install (Plugin) xtyle.use
+        if (module_live_demo && module_live_demo.install) {
+            xtyle.use(module_live_demo)
+        }
+
+        // Inject (Plugin) Style
+        if (installPlugins.length > 0 && plugins.style) {
+            xtyle.util.inject(plugins.style, "live-plugins")
+        }
+
+        // Inject (Module) Style
+        if (installPlugins.length > 0 && plugins.style) {
+            xtyle.util.inject(module.style, "live-code")
+        }
+
+        window.App = installed_views[PREVIEW_VIEW_NAME] || defaultView
+    })()
+</script>

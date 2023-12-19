@@ -164,3 +164,6 @@ cython_debug/
 .pdm-build
 .pdm-python
 pdm.lock
+node_modules/
+package-lock.json
+xtyle.sqlite3

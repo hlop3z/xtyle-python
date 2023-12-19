@@ -1,0 +1,77 @@
+[
+  {
+    "model": "plugin",
+    "data": {
+      "docs_url": null,
+      "code": "var pluginOne={Alert:function(t={}){return h(\"div\",{\"x-html\":!0,...t,class:[\"Alert\",t.class]},t.children)},CustomButton:function(t={}){return h(\"div\",{\"x-html\":!0,...t,class:[\"CustomButton\",t.class]},t.children)},install:function(t,n){return{init:void 0,store:{},globals:{},directives:{}}}};",
+      "style": ".Alert,.CustomButton{color:red}",
+      "ts_declarations": "declare const pluginOne: {\n/**\n * Component - This is a my component.\n */\nAlert: (props: {\n  class?: string | string[] | object;\n  style?: string | string[] | object;\n  children?: any;\n}) => object;\n\n/**\n * Component - This is a my component.\n */\nCustomButton: (props: {\n  class?: string | string[] | object;\n  style?: string | string[] | object;\n  children?: any;\n}) => object;\n}",
+      "name": "plugin-one"
+    }
+  },
+  {
+    "model": "plugin",
+    "data": {
+      "docs_url": null,
+      "code": "var pluginTwo={Alert:function(t={}){return h(\"div\",{\"x-html\":!0,...t,class:[\"Alert\",t.class]},t.children)},CustomButton:function(t={}){return h(\"div\",{\"x-html\":!0,...t,class:[\"CustomButton\",t.class]},t.children)},install:function(t,n){return{init:void 0,store:{},globals:{},directives:{}}}};",
+      "style": ".Alert,.CustomButton{color:red}",
+      "ts_declarations": "declare const pluginTwo: {\n/**\n * Component - This is a my component.\n */\nAlert: (props: {\n  class?: string | string[] | object;\n  style?: string | string[] | object;\n  children?: any;\n}) => object;\n\n/**\n * Component - This is a my component.\n */\nCustomButton: (props: {\n  class?: string | string[] | object;\n  style?: string | string[] | object;\n  children?: any;\n}) => object;\n}",
+      "name": "plugin-two"
+    }
+  },
+  {
+    "model": "project",
+    "data": {
+      "docs": null,
+      "name": "frontend",
+      "global_name": "my_lib"
+    }
+  },
+  {
+    "model": "theme",
+    "data": {
+      "global_name": "my_lib",
+      "docs": null,
+      "bases": null,
+      "styles": null,
+      "directives": "export default {}",
+      "globals": "export default {}",
+      "store": "export default {}",
+      "init": "export default [() => console.log(\"Plugin INIT\")]",
+      "ts_declarations": null,
+      "name": "frontend"
+    }
+  },
+  {
+    "model": "component",
+    "data": {
+      "code": "\nexport default function Component(props: Props = {}) {\n  return (\n    <div x-html {...props} class={[$NAME, props.class]}>\n      {props.children}\n    </div>\n  );\n}\n",
+      "style": "\n$color: red;\n.#{$NAME} { color: $color; }\n",
+      "props": "\ntype Props = {\n  class?: string | string[] | object;\n  style?: string | string[] | object;\n  children?: any;\n};\n\nexport default Props;\n",
+      "docs": "\n/**\n * Component - This is a my component.\n */\n",
+      "meta": null,
+      "name": "alert"
+    }
+  },
+  {
+    "model": "component",
+    "data": {
+      "code": "\nexport default function Component(props: Props = {}) {\n  return (\n    <div x-html {...props} class={[$NAME, props.class]}>\n      {props.children}\n    </div>\n  );\n}\n",
+      "style": "\n$color: red;\n.#{$NAME} { color: $color; }\n",
+      "props": "\ntype Props = {\n  class?: string | string[] | object;\n  style?: string | string[] | object;\n  children?: any;\n};\n\nexport default Props;\n",
+      "docs": "\n/**\n * Component - This is a my component.\n */\n",
+      "meta": null,
+      "name": "custom-button"
+    }
+  },
+  {
+    "model": "view",
+    "data": {
+      "path": "/home",
+      "code": "\nexport default function Component(props: Props = {}) {\n  return (\n    <div x-html {...props} class={[props.class]}>\n      {props.children}\n    </div>\n  );\n}\n",
+      "style": "\n$color: red;\n.#{$NAME} { color: $color; }\n",
+      "docs": "\n/**\n * Component - This is a my component.\n */\n",
+      "name": "home"
+    }
+  }
+]

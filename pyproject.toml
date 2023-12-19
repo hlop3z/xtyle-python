@@ -1,7 +1,7 @@
 
 [project]
 name = "xtyle"
-version = "0.1.4"
+version = "0.1.9"
 description = "Xtyle (Toolkit)"
 readme = "README.md"
 license = { text = "MIT" }
@@ -9,11 +9,7 @@ requires-python = ">=3.10"
 authors = [
     { name = "hlop3z", email = "23062270+hlop3z@users.noreply.github.com" },
 ]
-dependencies = [
-    "py-mini-racer>=0.6.0",
-    "css-html-js-minify>=2.5.5",
-    "libsass>=0.22.0",
-]
+dependencies = ["jinja2>=3.1.2"]
 
 [build-system]
 requires = ["pdm-backend"]
@@ -23,7 +19,14 @@ build-backend = "pdm.backend"
 Homepage = "https://github.com/hlop3z/xtyle-python/"
 # Documentation = "https://hlop3z.github.io/xtyle-python/"
 
-[project.scripts]
+
+[project.optional-dependencies]
+debug = [
+    "py-mini-racer>=0.6.0",
+    "libsass>=0.22.0",
+    "requests>=2.31.0",
+    "sqlow>=0.1.5",
+]
 
 [tool]
 [tool.pdm]
@@ -35,6 +38,7 @@ package-dir = "src"
 dev = "python scripts/linter.py"
 pre = { shell = "pre-commit run --all-file" }
 test = { shell = "pytest -rA tests/" }
+simple-test = { shell = "python tests/simple.py" }
 pypi = "twine upload dist/*"
 
 [tool.pdm.dev-dependencies]
