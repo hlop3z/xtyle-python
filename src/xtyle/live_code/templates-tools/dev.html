@@ -13,17 +13,17 @@
         const pluginsNames = plugins.names || []
         const installPlugins = pluginsNames.map(element => `try { xtyle.use(${element}); } catch(e){};`).join("\n")
 
-        // Inject Current Module
+        // Inject Current (Module)
         if (plugins.javascript) {
             eval((plugins.javascript || "") + installPlugins)
         }
 
-        // Inject Current Module
+        // Inject Current (Module)
         if (module.javascript) {
             eval((module.javascript || "") + "window.module_live_demo = " + PREVIEW_MODULE_NAME + ";")
         }
 
-        // Inject Current Views
+        // Inject Current (Views)
         if (views.javascript) {
             eval((views.javascript || "") + "window.installed_views = installed_views;")
         }
@@ -39,10 +39,12 @@
         }
 
         // Inject (Module) Style
-        if (installPlugins.length > 0 && plugins.style) {
+        if (module.style) {
             xtyle.util.inject(module.style, "live-code")
         }
 
         window.App = installed_views[PREVIEW_VIEW_NAME] || defaultView
+
+        // xtyle.init(window.App, document.body)
     })()
 </script>

@@ -68,7 +68,7 @@ class XtyleApp:
         self.templates_dir.mkdir(parents=True, exist_ok=True)
 
         # Load Config
-        self.config = load_config(base_dir)
+        self.config = load_config(self.base_dir)
         self._create_base_file()
 
         rename = rename or {}
@@ -90,6 +90,9 @@ class XtyleApp:
             static=static_func,
             reverse=reverse_func,
         )
+
+    def load_config(self):
+        self.config = load_config(self.base_dir)
 
     def render(self, __url_path__, **kwargs):
         input_name = self.get_app_from_url(__url_path__)
@@ -199,7 +202,7 @@ class XtyleApp:
             base_url = self._rename_reverse.get(name) if self._root != name else ""
             root_base_url = self._base_url + "/" if self._base_url else ""
             xtyle_router = {
-                "baseURL": f"{root_base_url}{base_url}/",
+                "baseURL": f"{root_base_url}{base_url}/".replace("//", "/"),
                 "history": True,
             }
             xtyle_init = Markup(

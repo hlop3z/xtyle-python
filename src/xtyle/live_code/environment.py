@@ -515,7 +515,7 @@ class XtyleEnvironment:
 
         my_plugin = self.build_module(package_name)
         my_views = self.build_views(package_name)
-
+        data_dict = {}
         if my_plugin:
             data_dict = {"name": module_name, "build_id": 0}
             found = self.environment.cache.get_by(name=module_name)
